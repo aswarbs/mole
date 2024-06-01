@@ -102,7 +102,7 @@ class JazzhandsController():
         Attempt to send the most recent gesture from gesture_queue to the GMS2 server.
         """
 
-        test = True
+        test = False
 
         if test:
             image = cv2.imread("testimg.jpg")
@@ -113,7 +113,7 @@ class JazzhandsController():
 
         if not self.pi_queue.empty():
             image = self.pi_queue.get()
-
+            image = image[100:600, 200:1000]
             cv2.imshow("",image)
             cv2.waitKey(1)
 

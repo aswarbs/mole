@@ -136,6 +136,8 @@ class JazzhandsController():
                 self.button_client.set_done()
             else:"""
             image = image[50:150, 60:240]
+            cv2.imshow("", image)
+            cv2.waitKey(1)
 
             self.process_image(image)
 

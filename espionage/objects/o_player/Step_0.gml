@@ -22,6 +22,9 @@ if(current_step >= step_target){
 		case TURN:
 			step_target = 90;
 			break;
+		case SHOOT:
+			current_step = step_target;
+			break;
 	}
 	
 }
@@ -37,4 +40,6 @@ switch(current_instr){
 		image_angle += 1;
 		current_step += 1;
 		break;
+	case SHOOT:
+		break;	
 }

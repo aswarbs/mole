@@ -7,3 +7,5 @@
 #macro FORWARD 5
 #macro TURN 6
 #macro SHOOT 7
+
+global.LAST_PROGRAM = ds_list_create();

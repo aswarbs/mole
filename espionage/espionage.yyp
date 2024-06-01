@@ -30,7 +30,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.2.0.132",
+    "IDEVersion":"2024.4.1.152",
   },
   "name":"espionage",
   "resources":[
@@ -44,6 +44,7 @@
     {"id":{"name":"o_map_generator","path":"objects/o_map_generator/o_map_generator.yy",},},
     {"id":{"name":"o_path","path":"objects/o_path/o_path.yy",},},
     {"id":{"name":"o_player","path":"objects/o_player/o_player.yy",},},
+    {"id":{"name":"o_visualise_colors","path":"objects/o_visualise_colors/o_visualise_colors.yy",},},
     {"id":{"name":"rm_main","path":"rooms/rm_main/rm_main.yy",},},
     {"id":{"name":"rm_mainmenu","path":"rooms/rm_mainmenu/rm_mainmenu.yy",},},
     {"id":{"name":"macros","path":"scripts/macros/macros.yy",},},

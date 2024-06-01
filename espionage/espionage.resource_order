@@ -26,6 +26,7 @@
     {"name":"o_gameover","order":9,"path":"objects/o_gameover/o_gameover.yy",},
     {"name":"o_map_generator","order":1,"path":"objects/o_map_generator/o_map_generator.yy",},
     {"name":"o_path","order":2,"path":"objects/o_path/o_path.yy",},
+    {"name":"o_visualise_colors","order":10,"path":"objects/o_visualise_colors/o_visualise_colors.yy",},
     {"name":"rm_mainmenu","order":2,"path":"rooms/rm_mainmenu/rm_mainmenu.yy",},
     {"name":"My_Song_2","order":1,"path":"sounds/My_Song_2/My_Song_2.yy",},
     {"name":"spr_barrier","order":3,"path":"sprites/spr_barrier/spr_barrier.yy",},

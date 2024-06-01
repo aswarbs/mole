@@ -14,6 +14,7 @@ import numpy as np
 HOST = "192.168.195.65"
 PORT = 9999
 
+
 class GMS2Client():
     stop_event: threading.Event     # Event to signal the termination of the thread.
     client_queue: Queue             # Queue to transfer data from the subthread to the main thread.
@@ -25,6 +26,7 @@ class GMS2Client():
         """
         # Create an event to signal the subthreads to safely stop execution.
         self.stop_event = threading.Event()
+        self.conn = None
 
         self.client_queue = Queue()
 
@@ -76,8 +78,8 @@ class GMS2Client():
 
         # Attempt connection to the server.
         try:
-            conn: socket.socket
-            conn, _ = sock.accept()
+            self.conn: socket.socket
+            self.conn, _ = sock.accept()
             print("connected gamemaker")
 
         # Handle socket timeout
@@ -87,26 +89,23 @@ class GMS2Client():
         except Exception as e:
             raise e
 
-        with conn:  
-            self.mainloop(stop_event, conn)
+        with self.conn:  
+            self.mainloop(stop_event, self.conn)
 
     def mainloop(self, stop_event: threading.Event, conn:socket.socket) -> None:
         """
         Send messages to the GMS2 server if any are queued.
         """
 
-        self.send_response(conn)
+        self.send_response("")
 
         # if the pi has sent an image (pi queue not empty), process it
         while not stop_event.is_set():
 
-            
-            received_data = self.receive_data(conn)
-            received_data = json.loads(received_data)
+            if not self.client_queue.empty():
+                pass
 
 
-            print("sending message!")
-            self.send_response(conn)
 
 
 
@@ -132,9 +131,11 @@ class GMS2Client():
         return received_data
 
             
-    
-    def send_response(self, conn):
-
-            success_response = {"message": "hello"}
+    def send_response(self, contours):
             
-            conn.send(json.dumps(success_response).encode('utf-8') + b'\n')
+            if self.conn is None:
+                return
+
+            success_response = {"contours": contours}
+            
+            self.conn.send(json.dumps(success_response).encode('utf-8') + b'\n')

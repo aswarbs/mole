@@ -25,9 +25,9 @@ if(n_id == server_socket)
         jsonData = json_parse(originalString)
 
         // Check if the struct has left variable
-        if variable_struct_exists(jsonData, "message")
+        if variable_struct_exists(jsonData, "contours")
         {
-			show_debug_message("hell yea");
+			show_debug_message(jsonData.contours);
         }
 
 

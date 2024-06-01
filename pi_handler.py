@@ -106,12 +106,7 @@ class PiClient():
 
                 image = self.convert_bytes_to_image(received_data)
 
-                print("showing")
-
-                cv2.imshow("", image)
-                cv2.waitKey(1)
-
-                print("shown")
+                self.client_queue.put(image)
 
                 self.send_response(conn)
 
@@ -150,7 +145,7 @@ class PiClient():
         # Decode the base64 string to bytes
         image_data_bytes = base64.b64decode(base64_image_data)
 
-        # Create a BytesIO object from the decoded bytes
+        # Create a BytesIO object from tfhe decoded bytes
         image_stream = io.BytesIO(image_data_bytes)
 
         # Open the image using PIL (Pillow)
@@ -162,8 +157,6 @@ class PiClient():
         # Convert RGB to BGR (this step is necessary only if your image is in color)
         image_array = cv2.cvtColor(image_array, cv2.COLOR_RGB2BGR)
 
-        cv2.imshow("", image_array)
-        cv2.waitKey(1)
 
         image_np = np.asarray(image)
 

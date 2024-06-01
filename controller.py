@@ -11,7 +11,7 @@ class JazzhandsController():
     gamemaker_client: GMS2Client 
     pi_client: PiClient
     gamemaker_queue: Queue                             # An instance of the client queue. Facilitates sending gesture data to the client object.
-    gesture_queue: Queue                            # An instance of the gesture_recognition queue. Allows transmission of gesture data to the client.
+    gesture_queue: Queue                          # An instance of the gesture_recognition queue. Allows transmission of gesture data to the client.
 
     def __init__(self) -> None:
         """

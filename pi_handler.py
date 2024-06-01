@@ -104,26 +104,27 @@ class PiClient():
 
             if received_data["has_image"]:
 
+                image = self.convert_bytes_to_image(received_data)
 
-                parsed_data = self.parse_data(received_data)
-
-                image = self.convert_bytes_to_image(parsed_data)
+                print("showing")
 
                 cv2.imshow("", image)
                 cv2.waitKey(1)
 
+                print("shown")
+
+                self.send_response(conn)
+
             else:
 
-                print("sending message!")
                 self.send_response(conn)
 
 
 
 
         return None
-
-
-    def receive_data(self, conn):
+            
+    def receive_data(self,conn):
         # Initialize an empty byte string to accumulate data
         received_data = b""  
 
@@ -137,19 +138,12 @@ class PiClient():
             # If the message delimiter is in the message, the end of the message has been found
             if b'\n' in data:
                 break
-
         return received_data
 
-    def parse_data(self, received_data):
-        try:
-            # Attempt to parse the message with JSON. Agreed encoding = UTF8
-            parsed_data = json.loads(received_data.decode('utf-8'))
-            return parsed_data
-        except:
-            pass
 
+    
 
-    def convert_bytes_to_image(self, parsed_data):
+    def convert_bytes_to_image(self,parsed_data):
         # Retrieve the base64-encoded image data
         base64_image_data = parsed_data['screenshotPNG']
 
@@ -174,10 +168,10 @@ class PiClient():
         image_np = np.asarray(image)
 
         return image_np
-            
     
     def send_response(self, conn):
-
-            success_response = {"take_photo": True}
             
-            conn.send(json.dumps(success_response).encode('utf-8') + b'\n')
+            success_response = {"take_photo": True}
+            json_data = json.dumps(success_response) + "\n"
+            data = json_data.encode('utf-8')
+            conn.send(data)

@@ -1,6 +1,4 @@
-# JazzHands | GMS2Client
-# Written by Amber Swarbrick 06/01/2024
-# Code Review Passed by Toby Clark 06/01/2024
+
 
 import socket
 import threading
@@ -45,12 +43,11 @@ class GMS2Client():
         """
 
         # ',' used in thread args to convert the single argument to a tuple.
-        gamemaker_thread: threading.Thread
-        gamemaker_thread = threading.Thread(
+        gm_thread: threading.Thread
+        gm_thread = threading.Thread(
             target=self.handle_connection_tcp, args=(self.stop_event,)
         )
-
-        return gamemaker_thread
+        return gm_thread
     
     def stop_thread(self) -> None:
         """
@@ -81,6 +78,7 @@ class GMS2Client():
         try:
             conn: socket.socket
             conn, _ = sock.accept()
+            print("connected gamemaker")
 
         # Handle socket timeout
         except socket.timeout:
@@ -92,19 +90,25 @@ class GMS2Client():
         with conn:  
             self.mainloop(stop_event, conn)
 
-
     def mainloop(self, stop_event: threading.Event, conn:socket.socket) -> None:
         """
         Send messages to the GMS2 server if any are queued.
         """
 
+        self.send_response(conn)
+
         # if the pi has sent an image (pi queue not empty), process it
         while not stop_event.is_set():
 
             
-            if not self.client_queue.empty():
-                data: str = self.client_queue.get()
-                self.send_response(conn, data)
+            received_data = self.receive_data(conn)
+            received_data = json.loads(received_data)
+
+
+            print("sending message!")
+            self.send_response(conn)
+
+
 
 
         return None
@@ -124,45 +128,13 @@ class GMS2Client():
             # If the message delimiter is in the message, the end of the message has been found
             if b'\n' in data:
                 break
+
         return received_data
 
-    def parse_data(self, received_data):
-        try:
-            # Attempt to parse the message with JSON. Agreed encoding = UTF8
-            parsed_data = json.loads(received_data.decode('utf-8'))
-            return parsed_data
-        except:
-            pass
-
-
-    def convert_bytes_to_image(self, parsed_data):
-        # Retrieve the base64-encoded image data
-        base64_image_data = parsed_data['screenshotPNG']
-
-        # Decode the base64 string to bytes
-        image_data_bytes = base64.b64decode(base64_image_data)
-
-        # Create a BytesIO object from the decoded bytes
-        image_stream = io.BytesIO(image_data_bytes)
-
-        # Open the image using PIL (Pillow)
-        image = Image.open(image_stream)
-
-        # Convert the PIL Image to a NumPy array
-        image_array = np.array(image)
-
-        # Convert RGB to BGR (this step is necessary only if your image is in color)
-        image_array = cv2.cvtColor(image_array, cv2.COLOR_RGB2BGR)
-
-        cv2.imshow("", image_array)
-        cv2.waitKey(1)
-
-        image_np = np.asarray(image)
-
-        return image_np
             
     
     def send_response(self, conn):
 
             success_response = {"message": "hello"}
+            
             conn.send(json.dumps(success_response).encode('utf-8') + b'\n')

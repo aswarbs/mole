@@ -79,7 +79,6 @@ class JazzhandsController():
         """
         if not self.gesture_queue.empty():
             gestures: str = self.gesture_queue.get()
-            print(gestures)
             self.gamemaker_queue.put(gestures)
             return True
         else:

@@ -17,7 +17,7 @@ PORT = 1234
 class PiClient():
     stop_event: threading.Event     # Event to signal the termination of the thread.
     client_queue: Queue             # Queue to transfer data from the subthread to the main thread.
-    thread: threading.Thread        # Client thread to maintain client-server connection.
+    thread: threading.Thread        # Client thread to maintain client-server self.connection.
 
     def __init__(self):
         """
@@ -59,7 +59,7 @@ class PiClient():
 
     def handle_connection_tcp(self, stop_event:threading.Event) -> bool:
         """
-        Initialise the connection to the server.
+        Initialise the self.connection to the server.
         Handle message transmission between the client and server.
 
         Args:
@@ -74,21 +74,21 @@ class PiClient():
         print("listening")
         sock.listen()
 
-        # Attempt connection to the server.
+        # Attempt self.connection to the server.
         try:
-            conn: socket.socket
-            conn, _ = sock.accept()
-            print("connected pi")
+            self.conn: socket.socket
+            self.conn, _ = sock.accept()
+            print("self.connected pi")
 
         # Handle socket timeout
         except socket.timeout:
-            print("Failed to connect to GMS2 due to timeout.\nTry increasing timeout length in settings.ini")
+            print("Failed to self.connect to GMS2 due to timeout.\nTry increasing timeout length in settings.ini")
             return False
         except Exception as e:
             raise e
 
-        with conn:  
-            self.mainloop(stop_event, conn)
+        with self.conn:  
+            self.mainloop(stop_event, self.conn)
 
     def mainloop(self, stop_event: threading.Event, conn:socket.socket) -> None:
         """
@@ -99,7 +99,7 @@ class PiClient():
         while not stop_event.is_set():
 
             
-            received_data = self.receive_data(conn)
+            received_data = self.receive_data()
             received_data = json.loads(received_data)
 
             if received_data["has_image"]:
@@ -108,24 +108,17 @@ class PiClient():
 
                 self.client_queue.put(image)
 
-                self.send_response(conn)
-
-            else:
-
-                self.send_response(conn)
-
-
 
 
         return None
             
-    def receive_data(self,conn):
+    def receive_data(self):
         # Initialize an empty byte string to accumulate data
         received_data = b""  
 
         while True:
             # Receive 1024 bytes of data
-            data = conn.recv(1024)
+            data = self.conn.recv(1024)
 
             # Append the newly received data to the current item of data being collected
             received_data += data  
@@ -133,6 +126,9 @@ class PiClient():
             # If the message delimiter is in the message, the end of the message has been found
             if b'\n' in data:
                 break
+
+        #self.client_queue.put("done")
+        print("done")
         return received_data
 
 
@@ -162,11 +158,11 @@ class PiClient():
 
         return image_np
     
-    def send_response(self, conn):
+    def send_response(self):
             
-            
+
             
             success_response = {"take_photo": True}
             json_data = json.dumps(success_response) + "\n"
             data = json_data.encode('utf-8')
-            conn.send(data)
+            self.conn.send(data)

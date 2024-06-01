@@ -5,6 +5,7 @@
 from gamemaker_handler import GMS2Client
 from pi_handler import PiClient
 from queue import Queue
+from buttons import Button
 
 import cv2
 from enum import Enum
@@ -44,6 +45,7 @@ class JazzhandsController():
 
         self.create_client()
         self.create_pi_client()
+        self.create_button_client()
 
         # Boolean flag to continuously run the controller until a stopping condition is met.
         self.running = True
@@ -65,6 +67,14 @@ class JazzhandsController():
         self.pi_client = PiClient()
         self.pi_queue: Queue = self.pi_client.client_queue
         self.pi_client.start_thread()
+
+    def create_button_client(self) -> None:
+        """
+        Creates a thread which initialises the pi client.
+        """
+        self.button_client = Button()
+        self.button_queue: Queue = self.button_client.client_queue
+        self.button_client.start_thread()
 
     def mainloop(self) -> None:
         """
@@ -102,18 +112,29 @@ class JazzhandsController():
         Attempt to send the most recent gesture from gesture_queue to the GMS2 server.
         """
 
+
         test = False
 
         if test:
             image = cv2.imread("testimg.jpg")
-            image = cv2.resize(image, (0, 0), fx = 0.5, fy = 0.5)
             self.process_image(image)
             return
+        
+        if not self.button_queue.empty():
+            command = self.button_queue.get()
+            if command == "D10":
+                print("received button press")
+                self.pi_client.send_response()
+            else:
+                self.gamemaker_client.send_button_response(command)
         
 
         if not self.pi_queue.empty():
             image = self.pi_queue.get()
-            image = image[100:600, 200:1000]
+            """if image == "done":
+                self.button_client.set_done()
+            else:"""
+            image = image[50:150, 60:240]
             cv2.imshow("",image)
             cv2.waitKey(1)
 
@@ -162,8 +183,8 @@ class JazzhandsController():
         # Find contours again in the processed image
         new_contours, _ = cv2.findContours(result, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
-        #cv2.imshow(color, image)
-        #cv2.waitKey(1)
+        cv2.imshow(color, image)
+        cv2.waitKey(1)
 
 
         return [(c, color) for c in new_contours]

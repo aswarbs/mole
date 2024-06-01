@@ -140,3 +140,11 @@ class GMS2Client():
             success_response = {"contours": contours}
             
             self.conn.send(json.dumps(success_response).encode('utf-8') + b'\n')
+
+    def send_button_response(self, button):
+
+        if self.conn is None:
+            return
+        
+        response = {"button": button}
+        self.conn.send(json.dumps(response).encode('utf-8') + b'\n')

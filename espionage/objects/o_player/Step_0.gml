@@ -24,6 +24,9 @@ if(current_step >= step_target){
 			break;
 		case SHOOT:
 			current_step = step_target;
+			var dir = direction;
+			var img = image_angle;
+			instance_create_layer(x, y, "Instances", o_missile, {direction: dir, image_angle: img});
 			break;
 	}
 	

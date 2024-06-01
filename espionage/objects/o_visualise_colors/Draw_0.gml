@@ -13,8 +13,9 @@ for(var _k = 0; _k < ds_list_size(global.LAST_PROGRAM); _k++){
 			draw_set_color(c_blue);
 			break;
 	}
-	draw_circle(x + (40 * _k), y, 30, false);
+	draw_circle(x + (40 * _k), y, 15, false);
 	draw_set_color(c_black);
+	
 	draw_circle(x + (40 * _k), y, 31, true);
 	draw_circle(x + (40 * _k), y, 32, true);
 }

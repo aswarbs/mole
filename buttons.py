@@ -4,7 +4,7 @@ import sys
 import threading
 from queue import Queue
 
-COM = 'COM4'
+COM = '/dev/tty.usbmodem102'
 BAUD = 9600
 
 

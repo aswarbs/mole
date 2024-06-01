@@ -10,7 +10,7 @@ var cy = 400;
 PATH = ds_list_create();
 ds_list_add(PATH, [cx, cy])	
 
-instance_create_layer(cx + 50, cy + 50, "Instances", o_player);
+instance_create_layer(cx + 100, cy + 100, "Instances", o_player);
 
 for(var i = 1; i < WIDTH; i++)
 {
@@ -27,6 +27,8 @@ for(var i = 1; i < WIDTH; i++)
 		}
 	}
 }
+
+instance_create_layer(cx + 50, cy + 50, "Instances", o_coin);
 
 // Iterate over the ds_list and get each element
 var list_size = ds_list_size(PATH);
@@ -47,7 +49,7 @@ function in_path(_x, _y, _PATH){
 	return false;
 }
 
-var nos = 30;
+var nos = 50;
 var count = 0;
 while(count < nos){
 	count++;

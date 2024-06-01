@@ -2,7 +2,7 @@
 // You can write your code in this editor
 
 /* Assign target from instructions */
-if(target_x == x && target_y == y){
+if(current_step >= step_target){
 	original_x = x;
 	original_y = y;
 	
@@ -13,30 +13,28 @@ if(target_x == x && target_y == y){
 	var next_instr = ds_list_find_value(instructions, 0);
 	ds_list_delete(instructions, 0);
 	
+	current_step = 0;
+	current_instr = next_instr
 	switch(next_instr){
-		case UP:
-			target_y = y - 100;
-			target_x = x;
+		case FORWARD:
+			step_target = 100;
 			break;
-		case LEFT:
-			target_y = y;
-			target_x = x - 100;
-			break;
-		case RIGHT:
-			target_y = y;
-			target_x = x + 100;
-			break;
-		case DOWN:
-			target_y = y + 100;
-			target_x = x;
+		case TURN:
+			step_target = 90;
 			break;
 	}
 	
 }
 
-
-/* Move to target */
-if(x < target_x){ x += 1; }
-if(x > target_x){ x -= 1; }
-if(y < target_y){ y += 1; }
-if(y > target_y){ y -= 1; }
+switch(current_instr){
+	case FORWARD:
+		x = x + lengthdir_x(1, direction);
+		y = y + lengthdir_y(1, direction);
+		current_step += 1;
+		break;
+	case TURN:
+		direction += 1;
+		image_angle += 1;
+		current_step += 1;
+		break;
+}

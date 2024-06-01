@@ -33,6 +33,7 @@ if(n_id == server_socket)
 			with(o_player){
 				for(var i = 0; i < array_length(contours); i++){
 					var elem = contours[i];
+					global.LAST_PROGRAM = ds_list_from_array(elem);
 					switch elem{
 						
 						case "red":

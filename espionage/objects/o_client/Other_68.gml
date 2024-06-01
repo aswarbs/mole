@@ -39,11 +39,11 @@ if(n_id == server_socket)
 							ds_list_add(instructions, UP);
 							break;
 						case "green":
-							ds_list_add(instructions, DOWN);
-							break;
-						case "black":
 							ds_list_add(instructions, LEFT);
 							break;
+						/*case "black":
+							ds_list_add(instructions, DOWN);
+							break;*/
 						case "blue":
 							ds_list_add(instructions, RIGHT);
 							break;

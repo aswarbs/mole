@@ -162,6 +162,9 @@ class JazzhandsController():
         # Find contours again in the processed image
         new_contours, _ = cv2.findContours(result, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
+        #cv2.imshow(color, image)
+        #cv2.waitKey(1)
+
 
         return [(c, color) for c in new_contours]
 

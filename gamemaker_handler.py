@@ -11,7 +11,7 @@ import io
 import numpy as np
 
 
-HOST = "192.168.195.65"
+HOST = "10.0.1.197"
 PORT = 9999
 
 
@@ -135,6 +135,7 @@ class GMS2Client():
             
             if self.conn is None:
                 return
+            
 
             success_response = {"contours": contours}
             

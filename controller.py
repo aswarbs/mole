@@ -114,6 +114,9 @@ class JazzhandsController():
         if not self.pi_queue.empty():
             image = self.pi_queue.get()
 
+            cv2.imshow("",image)
+            cv2.waitKey(1)
+
             self.process_image(image)
 
             return True

@@ -7,7 +7,7 @@
 /// @date   16/01/2023
 
 client_socket = network_create_socket(network_socket_tcp);
-server_socket = network_connect_raw_async(client_socket, "192.168.195.65", 9999);
+server_socket = network_connect_raw_async(client_socket, "10.0.1.197", 9999);
 
 if(server_socket < 0) show_message("Could not connect! Try turning on the server?");
 else

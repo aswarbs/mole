@@ -11,7 +11,7 @@ import io
 import numpy as np
 
 
-HOST = "192.168.195.65"
+HOST = "10.0.1.197"
 PORT = 1234
 
 class PiClient():
@@ -163,6 +163,8 @@ class PiClient():
         return image_np
     
     def send_response(self, conn):
+            
+            
             
             success_response = {"take_photo": True}
             json_data = json.dumps(success_response) + "\n"

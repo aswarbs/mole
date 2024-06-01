@@ -28,6 +28,29 @@ if(n_id == server_socket)
         if variable_struct_exists(jsonData, "contours")
         {
 			show_debug_message(jsonData.contours);
+			
+			var contours = jsonData.contours;
+			with(o_player){
+				for(var i = 0; i < array_length(contours); i++){
+					var elem = contours[i];
+					switch elem{
+						
+						case "red":
+							ds_list_add(instructions, UP);
+							break;
+						case "green":
+							ds_list_add(instructions, DOWN);
+							break;
+						case "black":
+							ds_list_add(instructions, LEFT);
+							break;
+						case "blue":
+							ds_list_add(instructions, RIGHT);
+							break;
+						
+					}
+				}
+			}
         }
 
 

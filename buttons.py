@@ -79,19 +79,19 @@ class Button():
                         self.done = False
                     if "D7" in val:
                         print("D7 pressed")
-                        self.client_queue.put("D7")
+                        self.client_queue.put("4")
                         self.done = False
                     if "D6" in val:
                         print("D6 pressed")
-                        self.client_queue.put("D6")
+                        self.client_queue.put("3")
                         self.done = False
                     if "D5" in val:
                         print("D5 pressed")
-                        self.client_queue.put("D5")
+                        self.client_queue.put("2")
                         self.done = False
                     if "D4" in val:
                         print("D4 pressed")
-                        self.client_queue.put("D4")
+                        self.client_queue.put("1")
                         self.done = False
 
         except serial.SerialException as e:

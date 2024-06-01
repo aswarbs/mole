@@ -36,16 +36,41 @@ if(n_id == server_socket)
 					switch elem{
 						
 						case "red":
-							ds_list_add(instructions, UP);
+							ds_list_add(instructions, FORWARD);
 							break;
 						case "green":
-							ds_list_add(instructions, LEFT);
+							ds_list_add(instructions, TURN);
 							break;
-						/*case "black":
-							ds_list_add(instructions, DOWN);
-							break;*/
 						case "blue":
-							ds_list_add(instructions, RIGHT);
+							ds_list_add(instructions, SHOOT);
+							break;
+						
+					}
+				}
+			}
+        }
+		
+		if variable_struct_exists(jsonData, "button")
+        {
+			show_debug_message(jsonData.button);
+			
+			var button = jsonData.button;
+			with(o_player){
+				for(var i = 0; i < array_length(button); i++){
+					var elem = button[i];
+					switch elem{
+						
+						case "1":
+							show_debug_message("1");
+							break;
+						case "2":
+							show_debug_message("2");
+							break;
+						case "3":
+							show_debug_message("3");
+							break;
+						case "4":
+							show_debug_message("4");
 							break;
 						
 					}

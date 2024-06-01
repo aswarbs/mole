@@ -126,6 +126,7 @@ class JazzhandsController():
                 print("received button press")
                 self.pi_client.send_response()
             else:
+                print("sending button")
                 self.gamemaker_client.send_button_response(command)
         
 
@@ -135,8 +136,6 @@ class JazzhandsController():
                 self.button_client.set_done()
             else:"""
             image = image[50:150, 60:240]
-            cv2.imshow("",image)
-            cv2.waitKey(1)
 
             self.process_image(image)
 

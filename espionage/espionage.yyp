@@ -50,6 +50,7 @@
     {"id":{"name":"macros","path":"scripts/macros/macros.yy",},},
     {"id":{"name":"My_Song_2","path":"sounds/My_Song_2/My_Song_2.yy",},},
     {"id":{"name":"sng_song","path":"sounds/sng_song/sng_song.yy",},},
+    {"id":{"name":"explosion","path":"sprites/explosion/explosion.yy",},},
     {"id":{"name":"spr_barrier","path":"sprites/spr_barrier/spr_barrier.yy",},},
     {"id":{"name":"spr_bush","path":"sprites/spr_bush/spr_bush.yy",},},
     {"id":{"name":"spr_coin","path":"sprites/spr_coin/spr_coin.yy",},},

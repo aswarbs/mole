@@ -29,6 +29,7 @@
     {"name":"o_visualise_colors","order":10,"path":"objects/o_visualise_colors/o_visualise_colors.yy",},
     {"name":"rm_mainmenu","order":2,"path":"rooms/rm_mainmenu/rm_mainmenu.yy",},
     {"name":"My_Song_2","order":1,"path":"sounds/My_Song_2/My_Song_2.yy",},
+    {"name":"explosion","order":10,"path":"sprites/explosion/explosion.yy",},
     {"name":"spr_barrier","order":3,"path":"sprites/spr_barrier/spr_barrier.yy",},
     {"name":"spr_bush","order":2,"path":"sprites/spr_bush/spr_bush.yy",},
     {"name":"spr_coin","order":7,"path":"sprites/spr_coin/spr_coin.yy",},

@@ -1,6 +1,22 @@
-## About The Project
+<br />
+<div align="center">
 
-<p align="center"><img src="img2.png" width="750"></p>
+  <h3 align="center">Mole</h3>
+
+  <p align="center">
+    🕺 1st Place at Hack The Museum! Networked Computer-Vision Punchcard Programming game deployed with GameMaker and Python3.
+    <br />
+    <br />
+    <a href="https://www.hackster.io/tobybenjaminclark/mole-28b94b">View Hackster</a>
+    ·
+    <a href="https://github.com//aswarbs/mole/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/aswarbs/mole/issues">Request Feature</a>
+  </p>
+</div>
+
+
+## About The Project
 
 Mole is a computer vision powered logic game where you program the main character by colouring in paper, inspired by punchcard computers!
 
@@ -8,15 +24,15 @@ We are interested in old computers, and wanted to create a game that embodies a 
 
 <p align="center"><img src="moletrailer.gif" width="750"></p>
 
-The goal of the game is to program a robot using coloured circles on a piece of paper to destroy a top secret document in a randomly-generated level! You can go forward, turn right and shoot missiles to clear your path/destroy the files if you get a clear shot!
+The goal of the game is to program a robot using coloured circles on a piece of paper to destroy a top secret document in a randomly generated level! You can go forward, turn right and shoot missiles to clear your path/destroy the files if you get a clear shot!
 
-So we created Mole! Mole is a game where you program a robot to destroy some secret documents. You do this by drawing colored circles on a piece of paper, which are scanned using a raspberry-pi cam (We didn't bring a webcam...) and then are interpreted with computer vision.
+So we created Mole! Mole is a game where you program a robot to destroy some secret documents. You do this by drawing colored circles on a piece of paper, which are scanned using a Raspberry Pi Camera (We didn't bring a webcam...) and then are interpreted with computer vision.
 
 <p align="center"><img src="img1.png" width="750"></p>
 
 From here, the drone in game can fire missiles, go forward or turn left. Similar to the controls for RURPLE. We think this was a pretty neat control mechanism and a prototype like this could form the basis for teaching children how old computers work in an accessible and innovative way.
 
-We used the particle photon 2 to handle button presses, and then forwarded this to the pi to actually capture the image. All communication was done over either raw TCP sockets or just serial communication over USB.We hope you like the project, and we have had a really fun day working on it!
+We used the Particle Photon 2 to handle button presses, and then forwarded this to the Pi to capture the image. All communication was done over either raw TCP sockets or just serial communication over USB.
 
 ## Getting Started
 

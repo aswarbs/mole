@@ -1,5 +1,7 @@
 ## About The Project
 
+<img src="img2.png" width="750">
+
 Mole is a computer vision powered logic game where you program the main character by colouring in paper, inspired by punchcard computers!
 
 We are interested in old computers, and wanted to create a game that embodies a form of physical programming similar to that seen in punchcard computers.
@@ -7,6 +9,8 @@ We are interested in old computers, and wanted to create a game that embodies a 
 The goal of the game is to program a robot using coloured circles on a piece of paper to destroy a top secret document in a randomly-generated level! You can go forward, turn right and shoot missiles to clear your path/destroy the files if you get a clear shot!
 
 So we created Mole! Mole is a game where you program a robot to destroy some secret documents. You do this by drawing colored circles on a piece of paper, which are scanned using a raspberry-pi cam (We didn't bring a webcam...) and then are interpreted with computer vision.
+
+<img src="img1.png" width="750">
 
 From here, the drone in game can fire missiles, go forward or turn left. Similar to the controls for RURPLE. We think this was a pretty neat control mechanism and a prototype like this could form the basis for teaching children how old computers work in an accessible and innovative way.
 

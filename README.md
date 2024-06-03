@@ -6,7 +6,7 @@ Mole is a computer vision powered logic game where you program the main characte
 
 We are interested in old computers, and wanted to create a game that embodies a form of physical programming similar to that seen in punchcard computers.
 
-<img src="Mole_Trailer.gif" width="750">
+<img src="moletrailer.gif" width="750">
 
 The goal of the game is to program a robot using coloured circles on a piece of paper to destroy a top secret document in a randomly-generated level! You can go forward, turn right and shoot missiles to clear your path/destroy the files if you get a clear shot!
 

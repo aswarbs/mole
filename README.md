@@ -1,10 +1,11 @@
-<br />
+<p align="center"><img src="header.png"></p>
+
 <div align="center">
 
-  <h3 align="center">Mole</h3>
+  <h1 align="center">MOLE</h1>
 
   <p align="center">
-    🕺 1st Place at Hack The Museum! Networked Computer-Vision Punchcard Programming game deployed with GameMaker and Python3.
+    1st Place at Hack The Museum! Networked Computer-Vision Punchcard Programming game deployed with GameMaker and Python3.
     <br />
     <br />
     <a href="https://www.hackster.io/tobybenjaminclark/mole-28b94b">View Hackster</a>

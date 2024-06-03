@@ -6,13 +6,16 @@
 
 ## About The Project
 
+## Getting Started
 
-## Prerequisites
+### Prerequisites
 
-
-## Installation
-
+### Installation
 
 ## Usage
+
+## Contributors
+
+## License
 
 

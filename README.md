@@ -62,4 +62,5 @@ The GameMaker frontend and Particle button logic was created by Toby Clark, with
 
 ## License
 
+The project is distributed under the MIT license. See `LICENSE.md` for more information.
 
